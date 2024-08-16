@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// Work is done when dynamic data is fetched
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios, { getApiData } from "./axios";
