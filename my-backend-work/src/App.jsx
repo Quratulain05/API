@@ -2,6 +2,10 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios, { getApiData } from "./axios";
+import { ThemeProvider, createTheme } from "@mui/material";
+import { RouterProvider } from "react-router-dom";
+import router from "../src/routes/Router";
+
 // Note Step 3 Best practice
 const API = "https://jsonplaceholder.typicode.com";
 //
@@ -63,22 +67,27 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+  // return (
+  //   <>
+  //     <h1> Axios Tuotorial</h1>
+  //     {isError != "" && <h2>{isError}</h2>}
+  //     <div className="grid">
+  //       {myData?.map((post) => {
+  //         const { id, title, body } = post;
+  //         return (
+  //           <div className="card" key={id}>
+  //             <h2>{title.slice(0, 15).toUpperCase()}</h2>
+  //             <p>{body.slice(0, 100)}</p>
+  //           </div>
+  //         );
+  //       })}
+  //     </div>
+  //   </>
+  // );
   return (
-    <>
-      <h1> Axios Tuotorial</h1>
-      {isError != "" && <h2>{isError}</h2>}
-      <div className="grid">
-        {myData?.map((post) => {
-          const { id, title, body } = post;
-          return (
-            <div className="card" key={id}>
-              <h2>{title.slice(0, 15).toUpperCase()}</h2>
-              <p>{body.slice(0, 100)}</p>
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 
